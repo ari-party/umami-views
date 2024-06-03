@@ -94,9 +94,9 @@ app.get('/svg', async (req, res) => {
 
     res
       .setHeader('content-type', 'image/svg+xml;charset=utf-8')
-      .setHeader('cache-control', 'max-age=60, must-revalidate')
+      .setHeader('cache-control', 'max-age=3600, stale-while-revalidate=21600')
       .setHeader('date', String(new Date()))
-      .setHeader('expires', String(new Date(Date.now() + 60_000)))
+      .setHeader('expires', String(new Date(Date.now() + 3_600 * 1_000)))
       .send(optimized);
   } catch (error) {
     console.warn(error);
