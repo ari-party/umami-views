@@ -92,12 +92,11 @@ app.get('/svg', async (req, res) => {
     const svgContent = replaceSVGContentFilterWithCamelcase(svg.outerHTML);
     const optimized = optimize(svgContent, { multipass: true }).data;
 
-    const now = new Date();
     res
       .setHeader('content-type', 'image/svg+xml;charset=utf-8')
-      .setHeader('cache-control', 'no-cache')
-      .setHeader('date', String(now))
-      .setHeader('expires', String(now))
+      .setHeader('cache-control', 'max-age=60, must-revalidate')
+      .setHeader('date', String(new Date()))
+      .setHeader('expires', String(new Date(Date.now() + 60_000)))
       .send(optimized);
   } catch (error) {
     console.warn(error);
