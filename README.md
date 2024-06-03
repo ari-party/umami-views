@@ -9,7 +9,7 @@
 
 graph with [umami](https://github.com/umami-software/umami) views data built on [star-history](https://github.com/star-history/star-history)
 
-<img style="height: 400px" src="https://umami-views.astrid.exposed/svg?shareURL=https://eu.umami.is/share/LGazGOecbDtaIwDr/umami.is&theme=light" />
+<img style="max-height: 400px" src="https://umami-views.astrid.exposed/svg?shareURL=https://eu.umami.is/share/LGazGOecbDtaIwDr/umami.is&theme=light" />
 
 ## usage
 
