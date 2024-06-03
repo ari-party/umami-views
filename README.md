@@ -9,6 +9,8 @@
 
 graph with [umami](https://github.com/umami-software/umami) views data built on [star-history](https://github.com/star-history/star-history)
 
+[![example](https://umami-views.astrid.exposed/svg?shareURL=https://eu.umami.is/share/LGazGOecbDtaIwDr/umami.is&theme=light)](https://eu.umami.is/share/LGazGOecbDtaIwDr/umami.is)
+
 ## usage
 
 ```bash
