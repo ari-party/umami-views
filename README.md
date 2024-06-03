@@ -17,7 +17,7 @@ graph with [umami](https://github.com/umami-software/umami) views data built on 
 $ curl -G https://example.com/svg \
     # The share url provided by Umami
     -d 'shareURL=https://umami.is/share/abcdefghijklmnop/example.com' \
-    # Either light or dark
+    # Either light or dark, defaults to dark
     -d 'theme=light' \
     # Don't include if you don't want the svg to be transparent (value can be anything)
     -d 'transparent=1' \
