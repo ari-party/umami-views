@@ -15,8 +15,9 @@ export default async function getViews(
   websiteId: string,
   token: string,
 ): Promise<PageViews | null> {
-  const now = Date.now();
-  const monthAgo = now - 30 * 24 * 60 * 60 * 1000;
+  const oneDay = 24 * 60 * 60 * 1000;
+  const now = Date.now() - oneDay;
+  const monthAgo = now - 30 * oneDay;
 
   const response = await ky.get(
     `${websiteAPI}api/websites/${websiteId}/pageviews?${new URLSearchParams({
