@@ -16,15 +16,18 @@ export default async function getViews(
   token: string,
 ): Promise<PageViews | null> {
   const oneDay = 24 * 60 * 60 * 1000;
-  const now = Date.now() - oneDay;
-  const monthAgo = now - 30 * oneDay;
+
+  let today: Date | number = new Date();
+  today.setHours(24, 0, 0, 0);
+  today = today.getTime();
+
+  const monthAgo = today - 30 * oneDay;
 
   const response = await ky.get(
     `${websiteAPI}api/websites/${websiteId}/pageviews?${new URLSearchParams({
       startAt: String(monthAgo),
-      endAt: String(now),
+      endAt: String(today - oneDay),
       unit: 'day',
-      offset: String(0),
       timezone: 'Europe/Amsterdam',
     })}`,
     {
