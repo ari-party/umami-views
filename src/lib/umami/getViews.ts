@@ -1,5 +1,7 @@
 import ky from 'ky';
 
+import getNearestMidnight from '../../utils/getNearestMidnight';
+
 export interface XY {
   x: string;
   y: number;
@@ -10,16 +12,14 @@ export interface PageViews {
   sessions: XY[];
 }
 
+const oneDay = 24 * 60 * 60 * 1000;
+
 export default async function getViews(
   websiteAPI: string,
   websiteId: string,
   token: string,
 ): Promise<PageViews | null> {
-  const oneDay = 24 * 60 * 60 * 1000;
-
-  let today: Date | number = new Date();
-  today.setHours(24, 0, 0, 0);
-  today = today.getTime();
+  const today = getNearestMidnight();
 
   const monthAgo = today - 30 * oneDay;
 
