@@ -43,7 +43,6 @@ app.get('/svg', async (req, res) => {
 
     const views = await getViews(websiteAPI, websiteId, token);
     if (!views) return res.status(500).send('Failed to get views');
-    const { pageviews } = views;
 
     const dom = new JSDOM(`<!DOCTYPE html><body></body>`);
     const body = dom.window.document.querySelector('body')!;
@@ -71,10 +70,10 @@ app.get('/svg', async (req, res) => {
             {
               label: website.domain,
               logo: '',
-              data: pageviews
-                .map((pageview) => ({
-                  x: new Date(pageview.x),
-                  y: pageview.y,
+              data: views
+                .map((view) => ({
+                  x: new Date(view.x),
+                  y: view.y,
                 }))
                 .sort((a, b) => b.x.getTime() - a.x.getTime()),
             },

@@ -1,7 +1,5 @@
 import ky from 'ky';
 
-import getNearestMidnight from '../../utils/getNearestMidnight';
-
 export interface XY {
   x: string;
   y: number;
@@ -18,15 +16,14 @@ export default async function getViews(
   websiteAPI: string,
   websiteId: string,
   token: string,
-): Promise<PageViews | null> {
-  const today = getNearestMidnight();
-
-  const monthAgo = today - 30 * oneDay;
+): Promise<Array<{ x: Date; y: number }> | null> {
+  const now = 1717714800 * 1_000 || Date.now();
+  const monthAgo = now - 30 * oneDay;
 
   const response = await ky.get(
     `${websiteAPI}api/websites/${websiteId}/pageviews?${new URLSearchParams({
       startAt: String(monthAgo),
-      endAt: String(today - oneDay),
+      endAt: String(now),
       unit: 'day',
       timezone: 'Europe/Amsterdam',
     })}`,
@@ -41,11 +38,19 @@ export default async function getViews(
   const data = (await response.json()) as PageViews;
 
   if (
-    typeof data === 'object' &&
-    typeof data.pageviews === 'object' &&
-    typeof data.sessions === 'object'
+    typeof data !== 'object' ||
+    typeof data.pageviews !== 'object' ||
+    typeof data.sessions !== 'object'
   )
-    return data;
+    return null;
 
-  return null;
+  const pageviews = data.pageviews
+    .map((view) => ({
+      x: new Date(view.x),
+      y: view.y,
+    }))
+    .sort((a, b) => b.x.getTime() - a.x.getTime());
+
+  // ignore the last day
+  return pageviews.slice(1);
 }
