@@ -17,7 +17,7 @@ export default async function getViews(
   websiteId: string,
   token: string,
 ): Promise<Array<{ x: Date; y: number }> | null> {
-  const now = 1717714800 * 1_000 || Date.now();
+  const now = Date.now();
   const monthAgo = now - 30 * oneDay;
 
   const response = await ky.get(
