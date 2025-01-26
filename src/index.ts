@@ -107,4 +107,8 @@ app.get('/svg', async (req, res) => {
 });
 
 const port = process.env.PORT || 8080;
-app.listen(port, () => console.log(`Listening on :${port}`));
+const hostname = process.env.HOSTNAME || '0.0.0.0';
+
+app.listen(Number(port), hostname, () =>
+  console.log(`Listening on ${hostname}:${port}`),
+);
