@@ -106,6 +106,8 @@ app.get('/svg', async (req, res) => {
   }
 });
 
+app.get('/healthcheck', (req, res) => res.send('OK'));
+
 const port = process.env.PORT || 8080;
 const hostname = process.env.HOSTNAME || '0.0.0.0';
 
