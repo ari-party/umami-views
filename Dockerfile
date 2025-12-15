@@ -1,8 +1,8 @@
-FROM node:22-alpine
+FROM node:24-alpine
 
 RUN apk --no-cache add curl
 
-RUN corepack enable pnpm
+RUN corepack enable && corepack prepare pnpm@10 --activate
 
 COPY . /server
 WORKDIR /server
