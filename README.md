@@ -1,4 +1,4 @@
-# umami views
+# umami-views
 
 [![License](https://img.shields.io/github/license/ari-party/umami-views?style=for-the-badge)](./LICENSE)
 ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
