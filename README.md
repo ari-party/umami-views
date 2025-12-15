@@ -9,14 +9,14 @@
 
 graph with [umami](https://github.com/umami-software/umami) views data built on [star-history](https://github.com/star-history/star-history)
 
-<img style="max-height: 400px" src="https://umami-views.astrid.exposed/svg?shareURL=https://eu.umami.is/share/LGazGOecbDtaIwDr/umami.is&theme=light" />
+<img style="max-height: 400px" src="https://umami-views.astrid.exposed/svg?shareURL=https://cloud.umami.is/analytics/eu/share/LGazGOecbDtaIwDr&theme=light" />
 
 ## usage
 
 ```bash
 $ curl -G https://example.com/svg \
     # The share url provided by Umami
-    -d 'shareURL=https://umami.is/share/abcdefghijklmnop/example.com' \
+    -d 'shareURL=https://cloud.umami.is/analytics/eu/share/abcdefghijklmnop' \
     # Either light or dark, defaults to dark
     -d 'theme=light' \
     # Don't include if you don't want the svg to be transparent (value can be anything)
