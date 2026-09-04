@@ -22,6 +22,7 @@ export default async function getWebsite(
   const response = await ky.get(`${websiteAPI}api/websites/${websiteId}`, {
     headers: {
       'x-umami-share-token': token,
+      'x-umami-share-context': '1',
     },
   });
   if (!response.ok) return null;

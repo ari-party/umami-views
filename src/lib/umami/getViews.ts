@@ -30,6 +30,7 @@ export default async function getViews(
     {
       headers: {
         'x-umami-share-token': token,
+        'x-umami-share-context': '1',
       },
     },
   );
